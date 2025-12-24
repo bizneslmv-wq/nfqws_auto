@@ -45,7 +45,7 @@
 
 ### Установка на Keenetic/Netcraze
 
-- для интерактивной установки ввести команду `curl -fsSL https://raw.githubusercontent.com/bizneslmv-wq/nfqws_auto/main/install.sh | sh`
+- для интерактивной установки ввести команду `curl -fsSL https://raw.githubusercontent.com/bizneslmv-wq/nfqws_auto/master/install.sh | sh`
 
 
 Нравится проект? Поддержи автора [здесь](https://boosty.to/maks_leto/donate)
