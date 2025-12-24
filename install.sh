@@ -1,72 +1,54 @@
 #!/bin/sh
-# nfqws-keenetic-auto-RU v1.0 — РФ DPI Bypass
-set -e
+# nfqws-auto-RU v1.0 — BusyBox совместимый
 
-echo "🚀 nfqws-keenetic-auto-RU: РФ DPI обход..."
+echo "🚀 nfqws-auto-RU установка..."
 
-# Платформа
-if [ -f /opt/etc/profile ]; then
-    PLAT="keenetic"
-    REPO="https://anonym-tsk.github.io/nfqws-keenetic/all"
-    CONF_DIR="/opt/etc/nfqws"
-    PKG_MGR="opkg"
-else
+# Только Keenetic
+if [ ! -f /opt/etc/profile ]; then
     echo "❌ Только Keenetic Entware"
     exit 1
 fi
 
 # Зависимости
-echo "📦 Зависимости..."
-$PKG_MGR update
-$PKG_MGR install ca-certificates wget-ssl curl -y
+opkg update
+opkg install ca-certificates wget-ssl curl -y
 
-# Репозиторий + NFQWS
-echo "🔧 NFQWS установка..."
-echo "src/gz nfqws-keenetic $REPO" > /opt/etc/opkg/nfqws-keenetic.conf
-$PKG_MGR update
-$PKG_MGR install nfqws-keenetic nfqws-keenetic-web -y
+# Репозиторий
+echo "src/gz nfqws-keenetic https://anonym-tsk.github.io/nfqws-keenetic/all" > /opt/etc/opkg/nfqws-keenetic.conf
+opkg update
+opkg install nfqws-keenetic nfqws-keenetic-web -y
 
-# РФ домены
-cat > $CONF_DIR/user.list << 'EOF'
-youtube.com googlevideo.com discord.com t.me instagram.com vk.com ntc.party
-EOF
+# Домены РФ
+echo "youtube.com googlevideo.com discord.com t.me ntc.party" > /opt/etc/nfqws/user.list
 
-# Тест стратегий
-echo "🧠 Автотест стратегий..."
-$CONF_DIR/../init.d/S51nfqws stop
-sleep 2
-
-# Лучшая стратегия РФ
-BEST_ARGS="--dpi-desync=fake,split2 --split-pos=1"
-ISP_IFACE=$(ip route | grep default | awk '{print $3}' | head -1)
-
-cat > $CONF_DIR/nfqws.conf << EOF
-ISP_INTERFACE="$ISP_IFACE"
-NFQWS_ARGS="$BEST_ARGS"
-NFQWS_ARGS_QUIC="--dpi-desync=fake --filter-udp=443"
+# Конфиг
+/opt/etc/init.d/S51nfqws stop
+ISP=`ip route | grep default | awk '{print $3}' | head -1`
+cat > /opt/etc/nfqws/nfqws.conf << END
+ISP_INTERFACE="$ISP"
+NFQWS_ARGS="--dpi-desync=fake,split2 --split-pos=1"
 NFQWS_EXTRA_ARGS="list"
 TCP_PORTS="443,80"
 UDP_PORTS="443"
 IPV6_ENABLED=1
 POLICY_NAME="nfqws"
 LOG_LEVEL=1
-EOF
+END
 
 # Запуск
-$CONF_DIR/../init.d/S51nfqws enable
-$CONF_DIR/../init.d/S51nfqws restart
+/opt/etc/init.d/S51nfqws enable
+/opt/etc/init.d/S51nfqws restart
 sleep 5
 
 # Проверка
-echo "✅ Проверка..."
-OK=0
-for site in youtube.com discord.com t.me ntc.party; do
-    if curl -k -m 5 "$site" 2>/dev/null | grep -q "200"; then
-        echo "✅ $site OK"
-        OK=$((OK+1))
+echo "✅ Тест сайтов:"
+for SITE in youtube.com discord.com t.me ntc.party; do
+    if curl -k -m 5 "$SITE" 2>/dev/null | grep -q "200"; then
+        echo "✅ $SITE"
+    else
+        echo "❌ $SITE"
     fi
 done
 
-echo "🎉 УСТАНОВЛЕНО! $OK/4 сайтов работают"
-echo "🌐 Веб: http://\$(hostname -I | awk '{print \$1}'):90"
-echo "🔄 /opt/bin/autostrategy"
+echo "🌐 Веб: http://`hostname -I | awk '{print $1}'`:90"
+echo "✅ УСТАНОВЛЕНО!"
