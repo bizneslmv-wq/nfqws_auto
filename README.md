@@ -1,14 +1,6 @@
-# nfqws-keenetic
+# nfqws_auto
 
-[![GitHub Release](https://img.shields.io/github/release/Anonym-tsk/nfqws-keenetic?style=flat&color=green)](https://github.com/Anonym-tsk/nfqws-keenetic/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/Anonym-tsk/nfqws-keenetic?style=flat)](https://github.com/Anonym-tsk/nfqws-keenetic/stargazers)
-[![License](https://img.shields.io/github/license/Anonym-tsk/nfqws-keenetic.svg?style=flat&color=orange)](LICENSE)
-[![CloudTips](https://img.shields.io/badge/donate-CloudTips-598bd7.svg?style=flat)](https://pay.cloudtips.ru/p/054d0666)
-[![YooMoney](https://img.shields.io/badge/donate-YooMoney-8037fd.svg?style=flat)](https://yoomoney.ru/to/410019180291197)
-[![Join Telegram group](https://img.shields.io/badge/Telegram_group-Join-blue.svg?style=social&logo=telegram)](https://t.me/nfqws)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Anonym-tsk/nfqws-keenetic)
-
-Пакеты для установки `nfqws` на маршрутизаторы.
+Интерактивный скрипт. Пакеты для установки `nfqws` на маршрутизаторы.
 
 > [!IMPORTANT]
 > Данный материал подготовлен в научно-технических целях.
@@ -22,86 +14,13 @@
 > Подразумевается, что вы понимаете, что вы делаете.
 
 Изначально написано для роутеров Keenetic/Netcraze с установленным entware.
-Однако, работоспособность также была проверена на прошивках Padavan и OpenWRT (читайте ниже).
-
-Списки проверенного оборудования собираем в [отдельной теме](https://github.com/Anonym-tsk/nfqws-keenetic/discussions/1).
-<details>
-  <summary>Собранный список моделей из темы</summary>
- 
-  - Билайн Smart Box GIGA
-  - Билайн Smart Box Turbo
-  - ASUS ROG Rapture GT-AX6000
-  - ASUS RT-AC51U
-  - ASUS RT-AC68U
-  - ASUS RT-AC86U
-  - ASUS RT-AX58U
-  - ASUS RT-AX86U
-  - ASUS RT-AX88U
-  - ASUS RT-N16
-  - ASUS RT-N56U
-  - Cudy TR1200
-  - Cudy TR3000
-  - D-Link DIR-620/D/F1A
-  - GL.iNet Flint 2 (GL-MT6000)
-  - Zyxel Keenetic II
-  - Zyxel Keenetic III
-  - Zyxel Keenetic Giga II
-  - Zyxel Keenetic Giga III
-  - Zyxel Keenetic Extra
-  - Zyxel Keenetic Extra II
-  - Zyxel Keenetic Ultra
-  - Zyxel Keenetic Ultra II
-  - Keenetic Giga (KN-1010)
-  - Keenetic Giga (KN-1011)
-  - Keenetic Giga (KN-1012)
-  - Keenetic 4G (KN-1212)
-  - Keenetic Omni (KN-1410)
-  - Keenetic Extra (KN-1710)
-  - Keenetic Extra (KN-1711)
-  - Keenetic Extra (KN-1713)
-  - Keenetic Ultra (KN-1810)
-  - Keenetic Ultra (KN-1811)
-  - Keenetic Viva (KN-1910)
-  - Keenetic Viva (KN-1912)
-  - Keenetic Viva (KN-1913)
-  - Keenetic DSL (KN-2010)
-  - Keenetic Launcher DSL (KN-2012)
-  - Keenetic Duo (KN-2110)
-  - Keenetic Skipper DSL (KN-2112)
-  - Keenetic Runner 4G (KN-2211)
-  - Keenetic Hero 4G+ (KN-2311)
-  - Keenetic Giga SE (KN-2410)
-  - Keenetic Giant (KN-2610)
-  - Keenetic Peak (KN-2710)
-  - Keenetic Hopper DSL (KN-3610)
-  - Keenetic Hopper (KN-3810)
-  - Keenetic Hopper (KN-3811)
-  - Keenetic Hopper SE (KN-3812)
-  - MikroTik hEX S (RB760iGS)
-  - MikroTik RB951G-2HnD
-  - Mikrotik hAP ac lite (RB952Ui-5ac2nD)
-  - TP-Link Archer C20
-  - TP-Link Archer C6U
-  - TP-Link WDR3500
-  - Xiaomi Mi Router 3G
-  - Xiaomi Mi Router 4
-  - Xiaomi Mi Router 4A
-  - Xiaomi Mi Router 4C
-  - Xiaomi Mi Router Mini
-  - Xiaomi Mi Router Pro
-  - Xiaomi Mi Wi-Fi mini
-  - Xiaomi Router AX3000T
-  - Xiaomi Router Redmi AC2100
-
-</details>
-
-Поделиться опытом можно в разделе [Discussions](https://github.com/Anonym-tsk/nfqws-keenetic/discussions) или в [чате](https://t.me/nfqws).
 
 ### Что это?
 
 `nfqws` - утилита для модификации TCP соединения на уровне пакетов, работает через обработчик очереди NFQUEUE и raw сокеты.
 
 Почитать подробнее можно на [странице авторов](https://github.com/bol-van/zapret) (ищите по ключевому слову `nfqws`).
+Почитать подробнее можно на [странице авторов]([https://github.com/bol-van/zapret](https://github.com/Anonym-tsk/nfqws-keenetic)).
 
 ### Подготовка Keenetic/Netcraze
 
