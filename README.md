@@ -20,6 +20,16 @@
  
 - Вместе с этим рекомендуется [настроить использование DoT/DoH](https://help.keenetic.com/hc/ru/articles/360007687159).
 
+- Например подключиться к роутеру через ssh к admin `ssh admin@192.168.1.1` и ввести команду.
+
+  - `dns-proxy tls upstream 94.140.14.14 sni dns.adguard-dns.com
+     dns-proxy tls upstream 94.140.15.15 sni dns.adguard-dns.com
+     dns-proxy tls upstream 1.1.1.1 sni cloudflare-dns.com
+     dns-proxy tls upstream 1.0.0.1 sni cloudflare-dns.com
+     dns-proxy https upstream https://dns.adguard-dns.com/dns-query
+     dns-proxy https upstream https://dns.cloudflare.com/dns-query
+     system configuration save`
+
 - Установить entware на маршрутизатор по инструкции [на встроенную память роутера](https://help.keenetic.com/hc/ru/articles/360021888880) или [на USB-накопитель](https://help.keenetic.com/hc/ru/articles/360021214160).
 
 - Через web-интерфейс Keenetic/Netcraze установить пакеты **Протокол IPv6** (**Network functions > IPv6**) и **Модули ядра подсистемы Netfilter** (**OPKG > Kernel modules for Netfilter** - не путать с "Netflow"). Обратите внимание, что второй компонент отобразится в списке пакетов только после того, как вы отметите к установке первый.
@@ -35,7 +45,7 @@
 
 ### Установка на Keenetic/Netcraze
 
-- для интерактивной установки ввести команду curl -fsSL https://raw.githubusercontent.com/bizneslmv-wq/nfqws_auto/main/install.sh | sh
+- для интерактивной установки ввести команду `curl -fsSL https://raw.githubusercontent.com/bizneslmv-wq/nfqws_auto/main/install.sh | sh`
 
 
 Нравится проект? Поддержи автора [здесь](https://boosty.to/maks_leto/donate)
